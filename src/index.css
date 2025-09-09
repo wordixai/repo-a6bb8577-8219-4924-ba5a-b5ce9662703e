@@ -2,17 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-The @apply directive should not be used with the group utility class.
-*/
-
 @layer base {
-  :root {
-   
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    color: hsl(222.2 84% 4.9%);
+    background: hsl(0 0% 100%);
   }
 
-  .dark {
-
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
   }
 }
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-border bg-background shadow-sm hover:bg-muted hover:text-muted-foreground h-9 px-4 py-2;
+  }
+
+  .btn-link {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-primary underline-offset-4 hover:underline h-9 px-4 py-2;
+  }
+
+  .card {
+    @apply rounded-xl border bg-card text-card-foreground shadow;
+  }
+
+  .input {
+    @apply flex h-9 w-full rounded-md border border-border bg-background px-3 py-1.5 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50;
+  }
+}
+
+/* Template selection cards */
+.template-card {
+  @apply flex aspect-video max-h-24 items-center rounded-md border-2 border-muted bg-card p-4 hover:bg-muted hover:text-muted-foreground sm:max-h-32 cursor-pointer transition-all;
+}
+
+.template-card.selected {
+  @apply border-primary;
+}
+
+/* OG Image preview */
+.og-preview {
+  @apply h-full w-full object-contain;
+}
+
+/* Gradient swatches */
+.gradient-swatch {
+  @apply aspect-square cursor-pointer rounded-md border-2 border-muted bg-card hover:bg-muted hover:text-muted-foreground transition-all;
+}
+
+.gradient-swatch.selected {
+  @apply border-primary;
+}
+
+/* Direction controls */
+.direction-control {
+  @apply flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-card p-2 hover:bg-muted hover:text-muted-foreground transition-all;
+}
+
+.direction-control.selected {
+  @apply border-primary;
+}
+</style>
